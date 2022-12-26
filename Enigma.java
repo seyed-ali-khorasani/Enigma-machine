@@ -56,7 +56,8 @@ public class Enigma
         try
         {
             Scanner readFile = new Scanner(file);
-            while (readFile.hasNextLine()) {
+            while (readFile.hasNextLine())
+            {
                 if (readFile.nextLine().contains(date)) {
                     plugBoarsString = readFile.nextLine().substring(12, 42);
                     plugBoard = plugBoarsString.split(",");
@@ -69,10 +70,23 @@ public class Enigma
                     break;
                 }
             }
+            plugBoardMap=createPlugBoard(plugBoard);
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
+    }
+    static HashMap<String,String> createPlugBoard(String[] plugBoard)
+    {
+        HashMap<String,String> plugBoardMap=new HashMap<>();
+        plugBoardMap.put(plugBoard[0].substring(0,1),plugBoard[0].substring(1,2));
+        plugBoardMap.put(plugBoard[0].substring(1,2),plugBoard[0].substring(0,1));
+        for (int i = 1; i < 8; i++)
+        {
+            plugBoardMap.put(plugBoard[i].substring(1,2),plugBoard[i].substring(2,3));
+            plugBoardMap.put(plugBoard[i].substring(2,3),plugBoard[i].substring(1,2));
+        }
+        return plugBoardMap;
     }
 }
