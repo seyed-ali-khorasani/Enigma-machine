@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -71,6 +72,20 @@ public class Enigma
                 }
             }
             plugBoardMap=createPlugBoard(plugBoard);
+            input.nextLine();
+            text=input.nextLine();
+            textSizeArray=text.split(" ");
+            String textArray[]=new String[text.length()];
+            ArrayList<String> textWords=new ArrayList<>();
+            ArrayList<String> answer=new ArrayList<>();
+            textArray=text.split(" ");
+            for (int i = 0; i < textArray.length; i++)
+            {
+                for (int j = 0; j < textArray[i].length(); j++)
+                {
+                    textWords.add(textArray[i].substring(j,j+1));
+                }
+            }
         }
         catch (Exception e)
         {
