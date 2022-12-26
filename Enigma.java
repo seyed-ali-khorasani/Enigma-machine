@@ -53,5 +53,26 @@ public class Enigma
         String rotor3String;
         String text;
         String textSizeArray[]=new String[100];
+        try
+        {
+            Scanner readFile = new Scanner(file);
+            while (readFile.hasNextLine()) {
+                if (readFile.nextLine().contains(date)) {
+                    plugBoarsString = readFile.nextLine().substring(12, 42);
+                    plugBoard = plugBoarsString.split(",");
+                    rotor1String = readFile.nextLine().substring(9, 35);
+                    rotor1 = rotor1String.split("");
+                    rotor2String = readFile.nextLine().substring(9, 35);
+                    rotor2 = rotor2String.split("");
+                    rotor3String = readFile.nextLine().substring(9, 35);
+                    rotor3 = rotor3String.split("");
+                    break;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
