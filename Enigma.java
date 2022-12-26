@@ -39,5 +39,19 @@ public class Enigma
         reflectorMap.put("y","b");
         reflectorMap.put("z","a");
         File file=new File("E:\\DARSI\\data structure\\tamrinat\\EnigmaFile.txt");
+        int rotor1Rotate=0;
+        int rotor2Rotate=0;
+        int rotor3Rotate=0;
+        String date=input.next();
+        String plugBoard[]=new String[8];
+        String plugBoarsString;
+        String rotor1[]=new String[26];
+        String rotor1String;
+        String rotor2[]=new String[26];
+        String rotor2String;
+        String rotor3[]=new String[26];
+        String rotor3String;
+        String text;
+        String textSizeArray[]=new String[100];
     }
 }
