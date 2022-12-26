@@ -39,7 +39,7 @@ public class Enigma
         reflectorMap.put("x","c");
         reflectorMap.put("y","b");
         reflectorMap.put("z","a");
-        File file=new File("E:\\DARSI\\data structure\\tamrinat\\EnigmaFile.txt");
+        File file=new File("E:\\DARSI\\data structure\\enigma\\EnigmaFile.txt");
         int rotor1Rotate=0;
         int rotor2Rotate=0;
         int rotor3Rotate=0;
@@ -103,21 +103,21 @@ public class Enigma
                 currentWord=findKey(rotor3Map,currentWord);
                 currentWord=plugBoard(plugBoardMap,currentWord);
                 answer.add(currentWord);
-                rotor1Map=rotate(rotor1Map);
-                if (rotor1Rotate!=25) rotor1Rotate++;
+                rotor3Map=rotate(rotor3Map);
+                if (rotor3Rotate!=25) rotor3Rotate++;
                 else
                 {
                     rotor2Map=rotate(rotor2Map);
-                    rotor1Rotate=0;
+                    rotor3Rotate=0;
                     rotor2Rotate++;
                 }
                 if (rotor2Rotate==26)
                 {
-                    rotor3Map=rotate(rotor3Map);
+                    rotor1Map=rotate(rotor1Map);
                     rotor2Rotate = 0;
-                    rotor3Rotate++;
+                    rotor1Rotate++;
                 }
-                if (rotor3Rotate==26) rotor3Rotate = 0;
+                if (rotor1Rotate==26) rotor1Rotate = 0;
             }
             int num=0;
             for (int i = 0; i < textSizeArray.length; i++)
