@@ -89,6 +89,10 @@ public class Enigma
             rotor1Map=createRotor1(rotor1,rotor1Map);
             rotor2Map=createRotor2(rotor2,rotor2Map);
             rotor3Map=createRotor3(rotor3,rotor3Map);
+            for (int i = 0; i < textWords.size(); i++)
+            {
+
+            }
         }
         catch (Exception e)
         {
