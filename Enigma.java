@@ -91,7 +91,33 @@ public class Enigma
             rotor3Map=createRotor3(rotor3,rotor3Map);
             for (int i = 0; i < textWords.size(); i++)
             {
-
+                String currentWord;
+                currentWord=textWords.get(i);
+                currentWord=plugBoard(plugBoardMap,currentWord);
+                currentWord=rotor3Map.get(currentWord);
+                currentWord=rotor2Map.get(currentWord);
+                currentWord=rotor1Map.get(currentWord);
+                currentWord=reflectorMap.get(currentWord);
+                currentWord=findKey(rotor1Map,currentWord);
+                currentWord=findKey(rotor2Map,currentWord);
+                currentWord=findKey(rotor3Map,currentWord);
+                currentWord=plugBoard(plugBoardMap,currentWord);
+                answer.add(currentWord);
+                rotor1Map=rotate(rotor1Map);
+                if (rotor1Rotate!=25) rotor1Rotate++;
+                else
+                {
+                    rotor2Map=rotate(rotor2Map);
+                    rotor1Rotate=0;
+                    rotor2Rotate++;
+                }
+                if (rotor2Rotate==26)
+                {
+                    rotor3Map=rotate(rotor3Map);
+                    rotor2Rotate = 0;
+                    rotor3Rotate++;
+                }
+                if (rotor3Rotate==26) rotor3Rotate = 0;
             }
         }
         catch (Exception e)
@@ -146,5 +172,34 @@ public class Enigma
             num++;
         }
         return rotor3Map;
+    }
+    static String plugBoard(HashMap<String,String> plugBoardMap,String currentWord)
+    {
+        if (plugBoardMap.containsKey(currentWord)) currentWord=plugBoardMap.get(currentWord);
+        return currentWord;
+    }
+    static HashMap<String,String> rotate(HashMap<String,String> rotorMap)
+    {
+        String temp;
+        char word1,word2;
+        temp=rotorMap.get("z");
+        for (int i = 122; i >97 ; i--)
+        {
+            word1=(char) i;
+            word2=(char) (i-1);
+            rotorMap.replace(String.valueOf(word1),rotorMap.get(String.valueOf(word2)));
+        }
+        rotorMap.replace("a",temp);
+        return rotorMap;
+    }
+    static String findKey(HashMap<String,String> rotorMap,String word)
+    {
+        char w;
+        for (int i = 97; i < 123; i++)
+        {
+            w=(char) i;
+            if (rotorMap.get(String.valueOf(w)).equals(word)) return String.valueOf(w);
+        }
+        return "df";
     }
 }
