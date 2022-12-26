@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -37,5 +38,6 @@ public class Enigma
         reflectorMap.put("x","c");
         reflectorMap.put("y","b");
         reflectorMap.put("z","a");
+        File file=new File("E:\\DARSI\\data structure\\tamrinat\\EnigmaFile.txt");
     }
 }
