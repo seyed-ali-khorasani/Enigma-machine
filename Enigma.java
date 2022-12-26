@@ -119,6 +119,16 @@ public class Enigma
                 }
                 if (rotor3Rotate==26) rotor3Rotate = 0;
             }
+            int num=0;
+            for (int i = 0; i < textSizeArray.length; i++)
+            {
+                for (int j = 0; j < textSizeArray[i].length(); j++)
+                {
+                    System.out.printf("%s",answer.get(num));
+                    num++;
+                }
+                System.out.printf(" ");
+            }
         }
         catch (Exception e)
         {
