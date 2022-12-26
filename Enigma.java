@@ -86,6 +86,9 @@ public class Enigma
                     textWords.add(textArray[i].substring(j,j+1));
                 }
             }
+            rotor1Map=createRotor1(rotor1,rotor1Map);
+            rotor2Map=createRotor2(rotor2,rotor2Map);
+            rotor3Map=createRotor3(rotor3,rotor3Map);
         }
         catch (Exception e)
         {
@@ -103,5 +106,41 @@ public class Enigma
             plugBoardMap.put(plugBoard[i].substring(2,3),plugBoard[i].substring(1,2));
         }
         return plugBoardMap;
+    }
+    static HashMap<String,String> createRotor1(String[] rotor1,HashMap<String,String> rotor1Map)
+    {
+        int num=0;
+        char word;
+        for (int i = 97; i < 123; i++)
+        {
+            word=(char) i;
+            rotor1Map.put(String.valueOf(word),rotor1[num]);
+            num++;
+        }
+        return rotor1Map;
+    }
+    static HashMap<String,String> createRotor2(String[] rotor2,HashMap<String,String> rotor2Map)
+    {
+        int num=0;
+        char word;
+        for (int i = 97; i < 123; i++)
+        {
+            word=(char) i;
+            rotor2Map.put(String.valueOf(word),rotor2[num]);
+            num++;
+        }
+        return rotor2Map;
+    }
+    static HashMap<String,String> createRotor3(String[] rotor3,HashMap<String,String> rotor3Map)
+    {
+        int num=0;
+        char word;
+        for (int i = 97; i < 123; i++)
+        {
+            word=(char) i;
+            rotor3Map.put(String.valueOf(word),rotor3[num]);
+            num++;
+        }
+        return rotor3Map;
     }
 }
